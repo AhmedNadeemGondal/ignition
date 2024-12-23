@@ -1,4 +1,4 @@
-const api_key = process.env.REACT_APP_API_KEY;
+const api_key = process.env.REACT_APP_SOME_THING;
 
 const base_url = `https://api.rawg.io/api/`;
 

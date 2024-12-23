@@ -2,6 +2,7 @@ import axios from "axios";
 import { popGURL, upComeGURL, newGURL, searchGameURL } from "../api";
 
 export const loadGames = () => async (dispatch) => {
+  console.log(popGURL);
   const popData = await axios.get(popGURL());
   const newGData = await axios.get(upComeGURL());
   const upComeGData = await axios.get(newGURL());

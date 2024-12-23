@@ -40,6 +40,9 @@ const StyledGame = styled(motion.div)`
   min-height: 30vh;
   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.3);
   text-align: center;
+  h3 {
+    padding: 1rem 1rem;
+  }
   border-radius: 1rem;
   overflow: hidden;
   img {
