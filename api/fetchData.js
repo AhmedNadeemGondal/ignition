@@ -1,7 +1,7 @@
 // api/fetchData.js
 
 // import fetch from "node-fetch";
-// import dotenv from "dotenv";
+import dotenv from "dotenv";
 
 dotenv.config(); // Load environment variables
 
