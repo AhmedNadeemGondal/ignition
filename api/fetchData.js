@@ -12,11 +12,13 @@
 //   }
 
 //   try {
-//     const response = await fetch(url, {
+
+//     const final_url = `${url}&key=${auth}`;
+
+//     const response = await fetch(final_url, {
 //       method: "GET",
 //       headers: {
 //         Accept: "application/json",
-//         Authorization: `Bearer ${auth}`,
 //       },
 //     });
 
@@ -25,32 +27,29 @@
 //     }
 
 //     const data = await response.json();
-//     res.status(200).json(data);
+//     res.status(200).json(data); // Return data to the client
 //   } catch (error) {
 //     res.status(500).json({ error: error.message });
 //   }
 // }
 
 import dotenv from "dotenv";
+dotenv.config();
 
-dotenv.config(); // Load environment variables
-
-// Access the API key from environment variables (server-side only)
-const auth = process.env.REACT_APP_SOME_THING; // Server-side environment variable
+const auth = process.env.REACT_APP_SOME_THING;
 
 export default async function handler(req, res) {
   const { url } = req.query;
 
   if (!url) {
+    console.error("Missing 'url' query parameter.");
     return res.status(400).json({ error: "URL query parameter is required" });
   }
 
   try {
-    // Reconstruct the full URL with the API key in the query string
-    const final_url = `${url}&key=${auth}`; // Append the API key as a query parameter
+    console.log(`Fetching data from: ${url}`);
 
-    // Make a request to the external API with the updated URL
-    const response = await fetch(final_url, {
+    const response = await fetch(url, {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -58,12 +57,15 @@ export default async function handler(req, res) {
     });
 
     if (!response.ok) {
-      throw new Error("Failed to fetch data from external API");
+      console.error(`External API responded with status: ${response.status}`);
+      throw new Error(`Failed to fetch data: ${response.statusText}`);
     }
 
     const data = await response.json();
-    res.status(200).json(data); // Return data to the client
+    console.log("Data fetched successfully:", data);
+    res.status(200).json(data);
   } catch (error) {
+    console.error("Error in serverless function:", error.message);
     res.status(500).json({ error: error.message });
   }
 }
