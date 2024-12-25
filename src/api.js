@@ -27,7 +27,7 @@
 // export const upComeGURL = () => `${base_url}${upcome_games}`;
 // export const newGURL = () => `${base_url}${new_games}`;
 
-// export const gameDetailURL = (game_id) =>a
+// export const gameDetailURL = (game_id) =>
 //   `${base_url}games/${game_id}?key=${api_key}`;
 // export const gameScreenShotURL = (game_id) =>
 //   `${base_url}games/${game_id}/screenshots?key=${api_key}`;
@@ -35,16 +35,16 @@
 // export const searchGameURL = (game_name) =>
 //   `${base_url}games?key=${api_key}&search=${game_name}&page_size=9`;
 
-const server_url = `/api/fetchData?url=`; // Local serverless function endpoint
-const base_url = `https://api.rawg.io/api/`; // External API base URL
+const server_url = `/api/fetchData?url=`;
+const base_url = `https://api.rawg.io/api/`;
 
 const getCurrMonth = () => {
-  const month = new Date().getMonth() + 1; // getMonth() is zero-based
+  const month = new Date().getMonth() + 1;
   return month < 10 ? `0${month}` : month;
 };
 
 const getCurrDay = () => {
-  const day = new Date().getDate(); // getDate() gets the day of the month
+  const day = new Date().getDate();
   return day < 10 ? `0${day}` : day;
 };
 
