@@ -1,37 +1,40 @@
-import axios from "axios";
 import dotenv from "dotenv";
-
 dotenv.config();
 
 const auth = process.env.REACT_APP_SOME_THING;
 
 export default async function handler(req, res) {
   const { url } = req.query;
+  // const fullUrl = `${url}&key=${auth}`;
+  const fullUrl = url.includes("?")
+    ? `${url}&key=${auth}`
+    : `${url}?key=${auth}`;
 
   if (!url) {
+    console.error("Missing 'url' query parameter.");
     return res.status(400).json({ error: "URL query parameter is required" });
   }
 
   try {
-    // Dynamically append the API key based on existing query parameters
-    const fullUrl = url.includes("?")
-      ? `${url}&key=${auth}`
-      : `${url}?key=${auth}`;
+    console.log(`Fetching data from: ${url}`);
 
-    console.log("Final URL:", fullUrl);
+    const response = await fetch(fullUrl, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+      },
+    });
 
-    const response = await axios.get(fullUrl);
-
-    res.status(200).json(response.data);
-  } catch (error) {
-    console.error("Error fetching data:", error.message);
-
-    if (error.response) {
-      return res.status(error.response.status).json({
-        error: error.response.data,
-      });
+    if (!response.ok) {
+      console.error(`External API responded with status: ${response.status}`);
+      throw new Error(`Failed to fetch data: ${response.statusText}`);
     }
 
+    const data = await response.json();
+    console.log("Data fetched successfully:", data);
+    res.status(200).json(data);
+  } catch (error) {
+    console.error("Error in serverless function:", error.message);
     res.status(500).json({ error: error.message });
   }
 }
