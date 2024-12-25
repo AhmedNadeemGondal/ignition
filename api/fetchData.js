@@ -40,6 +40,7 @@ const auth = process.env.REACT_APP_SOME_THING;
 
 export default async function handler(req, res) {
   const { url } = req.query;
+  const fullUrl = `${url}&key=${auth}`;
 
   if (!url) {
     console.error("Missing 'url' query parameter.");
@@ -49,7 +50,7 @@ export default async function handler(req, res) {
   try {
     console.log(`Fetching data from: ${url}`);
 
-    const response = await fetch(url, {
+    const response = await fetch(fullUrl, {
       method: "GET",
       headers: {
         Accept: "application/json",
