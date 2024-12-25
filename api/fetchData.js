@@ -1,4 +1,3 @@
-import dotenv from "dotenv";
 dotenv.config();
 
 const auth = process.env.REACT_APP_SOME_THING;
