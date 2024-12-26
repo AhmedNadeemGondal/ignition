@@ -25,5 +25,4 @@ To run the project locally:
 1. Clone the repository:
    ```bash
    git clone https://github.com/your-username/ignition.git
-   cd ignition
    ```
