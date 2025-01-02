@@ -3,8 +3,8 @@ import { popGURL, upComeGURL, newGURL, searchGameURL } from "../api";
 
 export const loadGames = () => async (dispatch) => {
   const popData = await axios.get(popGURL());
-  const newGData = await axios.get(upComeGURL());
-  const upComeGData = await axios.get(newGURL());
+  const newGData = await axios.get(newGURL());
+  const upComeGData = await axios.get(upComeGURL());
   dispatch({
     type: "FETCH_GAMES",
     payload: {
