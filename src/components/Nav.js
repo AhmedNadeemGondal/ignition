@@ -12,13 +12,12 @@ const Nav = () => {
 
   const inputHand = (e) => {
     setTextInput(e.target.value);
-    console.log(e.target.value);
   };
 
   const submitSearch = (e) => {
     e.preventDefault();
     dispatch(fetchSearch(textInput));
-    console.log(textInput);
+
     setTextInput("");
   };
 
