@@ -16,7 +16,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    console.log(`Fetching data from: ${url}`);
+    // console.log(`Fetching data from: ${url}`);
 
     const response = await fetch(fullUrl, {
       method: "GET",
@@ -31,7 +31,7 @@ export default async function handler(req, res) {
     }
 
     const data = await response.json();
-    console.log("Data fetched successfully:", data);
+    // console.log("Data fetched successfully:", data);
     res.status(200).json(data);
   } catch (error) {
     console.error("Error in serverless function:", error.message);

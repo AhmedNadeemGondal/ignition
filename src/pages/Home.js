@@ -20,6 +20,24 @@ function Home() {
   );
   const location = useLocation();
   const pathId = location.pathname.split("/")[2];
+  const upcomingWithBackground = upcoming.filter(
+    (obj) => obj.background_image !== null
+  );
+
+  const forbiddenTags = ["nsfw", "adult", "hentai", "erotic"];
+  const filterByForbiddenTags = (array, forbiddenTags) =>
+    array.filter(
+      (obj) =>
+        !obj.tags.some((tag) => forbiddenTags.includes(tag.name.toLowerCase()))
+    );
+
+  const popularFiltered = filterByForbiddenTags(popular, forbiddenTags);
+  const newgamesFiltered = filterByForbiddenTags(newgames, forbiddenTags);
+
+  const upcomingFiltered = filterByForbiddenTags(
+    upcomingWithBackground,
+    forbiddenTags
+  );
 
   return (
     <GameList variants={fadeIn} initial="hidden" animate="show">
@@ -50,7 +68,7 @@ function Home() {
         {/*  */}
         <h2>Upcoming Games</h2>
         <Games>
-          {upcoming.map((game) => {
+          {upcomingFiltered.map((game) => {
             return (
               <Game
                 name={game.name}
@@ -65,7 +83,7 @@ function Home() {
         {/*  */}
         <h2>Popular Games</h2>
         <Games>
-          {popular.map((game) => {
+          {popularFiltered.map((game) => {
             return (
               <Game
                 name={game.name}
@@ -80,7 +98,7 @@ function Home() {
         {/*  */}
         <h2>New Games</h2>
         <Games>
-          {newgames.map((game) => {
+          {newgamesFiltered.map((game) => {
             return (
               <Game
                 name={game.name}

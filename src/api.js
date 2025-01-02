@@ -21,7 +21,7 @@
 
 // const pop_games = `games?key=${api_key}&dates=${lastYear},${currDate}&ordering=-rating&page_size=10`;
 // const upcome_games = `games?key=${api_key}&dates=${currDate},${nextYear}&ordering=-added&page_size=10`;
-// const new_games = `games?key=${api_key}&dates=${lastYear},${currDate}&ordering=-released&page_size=10`;
+// const new_games = `games?key=${api_key}&dates=${lastYear},${currDate}&ordering=-released&page_size=15`;
 
 // export const popGURL = () => `${base_url}${pop_games}`;
 // export const upComeGURL = () => `${base_url}${upcome_games}`;
@@ -34,6 +34,8 @@
 
 // export const searchGameURL = (game_name) =>
 //   `${base_url}games?key=${api_key}&search=${game_name}&page_size=9`;
+
+// Deployment
 
 const server_url = `/api/fetchData?url=`;
 const base_url = `https://api.rawg.io/api/`;
@@ -57,7 +59,7 @@ const nextYear = `${currYear + 1}-${currMonth}-${currDay}`;
 
 // Construct URLs for different endpoints
 const pop_games = `games?dates=${lastYear},${currDate}&ordering=-rating&page_size=10`;
-const upcome_games = `games?dates=${currDate},${nextYear}&ordering=-added&page_size=10`;
+const upcome_games = `games?dates=${currDate},${nextYear}&ordering=-added&page_size=15`;
 const new_games = `games?dates=${lastYear},${currDate}&ordering=-released&page_size=10`;
 
 // Export URL functions with base_url concatenation
