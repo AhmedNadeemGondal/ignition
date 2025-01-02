@@ -68,7 +68,7 @@ function Home() {
         {/*  */}
         <h2>Upcoming Games</h2>
         <Games>
-          {upcomingFiltered.map((game) => {
+          {newgamesFiltered.map((game) => {
             return (
               <Game
                 name={game.name}
@@ -98,7 +98,7 @@ function Home() {
         {/*  */}
         <h2>New Games</h2>
         <Games>
-          {newgamesFiltered.map((game) => {
+          {upcomingFiltered.map((game) => {
             return (
               <Game
                 name={game.name}

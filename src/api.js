@@ -59,8 +59,8 @@ const nextYear = `${currYear + 1}-${currMonth}-${currDay}`;
 
 // Construct URLs for different endpoints
 const pop_games = `games?dates=${lastYear},${currDate}&ordering=-rating&page_size=10`;
-const upcome_games = `games?dates=${currDate},${nextYear}&ordering=-added&page_size=15`;
-const new_games = `games?dates=${lastYear},${currDate}&ordering=-released&page_size=10`;
+const upcome_games = `games?dates=${currDate},${nextYear}&ordering=-added&page_size=10`;
+const new_games = `games?dates=${lastYear},${currDate}&ordering=-released&page_size=15`;
 
 // Export URL functions with base_url concatenation
 export const popGURL = () =>
