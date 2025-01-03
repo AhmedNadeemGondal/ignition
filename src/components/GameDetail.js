@@ -16,6 +16,8 @@ import xbox_s from "../img/xbox_s.svg";
 import nintendo from "../img/nintendo.svg";
 import apple from "../img/apple.svg";
 import gamepad from "../img/gamepad.svg";
+import android from "../img/android.svg";
+import linux from "../img/linux.svg";
 import starEmpty from "../img/star-empty.png";
 import starFull from "../img/star-full.png";
 
@@ -59,10 +61,16 @@ const GameDetail = ({ pathId }) => {
         return xbox_s;
       case "PC":
         return steam;
+      case "Linux":
+        return linux;
       case "Nintendo Switch":
         return nintendo;
       case "iOS":
         return apple;
+      case "macOS":
+        return apple;
+      case "Android":
+        return android;
       default:
         return gamepad;
     }
@@ -84,13 +92,6 @@ const GameDetail = ({ pathId }) => {
               <Info>
                 <h3>Platforms</h3>
                 <Platforms>
-                  {/* {game.platforms.map((data) => (
-                    <img
-                      alt={data.platform.name}
-                      key={data.platform.id}
-                      src={getPlatformImg(data.platform.name)}
-                    ></img>
-                  ))} */}
                   {game.platforms.map((data) => {
                     return (
                       <Platform className="random" key={data.platform.id}>
@@ -163,12 +164,17 @@ const CardShadow = styled(motion.div)`
   &::-webkit-scrollbar-track {
     background: white;
   }
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
 `;
 
 const Detail = styled(motion.div)`
   width: 80%;
   border-radius: 1rem;
   padding: 2rem 5rem;
+  margin-top: 2rem;
   background: white;
   position: absolute;
   left: 10%;
@@ -176,6 +182,12 @@ const Detail = styled(motion.div)`
   z-index: 5;
   img {
     width: 100%;
+  }
+
+  @media (max-width: 768px) {
+    width: 90%;
+    padding: 1rem;
+    left: 5%;
   }
 `;
 
@@ -188,17 +200,32 @@ const Stats = styled(motion.div)`
     height: 2rem;
     display: inline;
   }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 `;
 
 const Info = styled(motion.div)`
   text-align: center;
   justify-content: center;
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+    width: 100%;
+  }
 `;
 
 const Platforms = styled(motion.div)`
   display: flex;
   justify-content: space-evenly;
+
+  @media (max-width: 768px) {
+    align-items: center;
+  }
 `;
+
 const Platform = styled(motion.div)`
   position: relative;
   display: flex;
@@ -207,6 +234,13 @@ const Platform = styled(motion.div)`
     margin: 0 1.5rem;
     width: 50%;
   }
+
+  @media (max-width: 768px) {
+    img {
+      width: 100%;
+      scale: 1.3;
+    }
+  }
 `;
 
 const Media = styled(motion.div)`
@@ -214,17 +248,23 @@ const Media = styled(motion.div)`
   img {
     width: 100%;
   }
+
+  @media (max-width: 768px) {
+    margin-top: 3rem;
+  }
 `;
 
 const Description = styled(motion.div)`
   margin: 5rem 0rem;
+
+  @media (max-width: 768px) {
+    margin: 3rem 0;
+  }
 `;
 
 const HoverText = styled(motion.div)`
   position: absolute;
   bottom: -2.5rem;
-  /* left: 50%; */
-  /* transform: translateX(-50%); */
   background: rgba(0, 0, 0, 0.8);
   color: white;
   padding: 0.5rem 1rem;
@@ -232,5 +272,11 @@ const HoverText = styled(motion.div)`
   font-size: 0.9rem;
   white-space: nowrap;
   pointer-events: none;
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+    bottom: -3rem;
+  }
 `;
+
 export default GameDetail;
