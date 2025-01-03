@@ -95,95 +95,45 @@ const pop_games = `games?&dates=${lastYear},${currDate}&ordering=-rating&page_si
 const upcome_games = `games?&dates=${currDate},${nextYear}&ordering=-added&page_size=10`;
 const new_games = `games?&dates=${lastYear},${currDate}&ordering=-released&page_size=10`;
 
-export const popGURL = () => `${encodeURIComponent(base_url + pop_games)}`;
-export const upComeGURL = () =>
-  `${encodeURIComponent(base_url + upcome_games)}`;
-export const newGURL = () => `${encodeURIComponent(base_url + new_games)}`;
-
-export const pop_games_page = (page) => {
-  console.log("This fired! pop Page");
-  return `${encodeURIComponent(
-    base_url +
-      "games?&dates=" +
-      lastYear +
-      "," +
-      currDate +
-      "&ordering=-rating&page_size=10&page=" +
-      page
-  )}`;
-};
-
-export const upcome_games_page = (page) => {
-  console.log("This fired! upCome Page");
-  return `${encodeURIComponent(
-    base_url +
-      "games?&dates=" +
-      lastYear +
-      "," +
-      currDate +
-      "&ordering=-added&page_size=10&page=" +
-      page
-  )}`;
-};
-
-export const new_games_page = (page) => {
-  console.log("This fired! newGames Page");
-  return `${encodeURIComponent(
-    base_url +
-      "games?&dates=" +
-      lastYear +
-      "," +
-      currDate +
-      "&ordering=-released&page_size=10&page=" +
-      page
-  )}`;
-};
-
-export const gameDetailURL = (game_id) =>
-  `${encodeURIComponent(base_url + "games/" + game_id + "?")}`;
-
-export const gameScreenShotURL = (game_id) =>
-  `${encodeURIComponent(base_url + "games/" + game_id + "/screenshots?")}`;
-
-export const searchGameURL = (game_name) =>
-  `${encodeURIComponent(
-    base_url + "games?&search=" + game_name + "&page_size=9"
-  )}`;
-
-export const search_games_page = (game_name, page) => {
-  console.log("This fired! search Games Page");
-  return `${encodeURIComponent(
-    base_url + "games?&search=" + game_name + "&page_size=9&page=" + page
-  )}`;
-};
-
 // export const popGURL = () => `${base_url}${pop_games}`;
 // export const upComeGURL = () => `${base_url}${upcome_games}`;
 // export const newGURL = () => `${base_url}${new_games}`;
 
-// export const pop_games_page = (page) => {
-//   console.log("This fired! pop Page");
-//   return `${base_url}games?&dates=${lastYear},${currDate}&ordering=-rating&page_size=10&page=${page}`;
-// };
+// Export URL functions with base_url concatenation
+export const popGURL = () =>
+  `${server_url}${encodeURIComponent(base_url + pop_games)}`;
+export const upComeGURL = () =>
+  `${server_url}${encodeURIComponent(base_url + upcome_games)}`;
+export const newGURL = () =>
+  `${server_url}${encodeURIComponent(base_url + new_games)}`;
 
-// export const upcome_games_page = (page) => {
-//   console.log("This fired! upCome Page");
-//   return `${base_url}games?&dates=${lastYear},${currDate}&ordering=-added&page_size=10&page=${page}`;
-// };
+export const pop_games_page = (page) => {
+  console.log("This fired! pop Page");
+  const urlPopNew = `${base_url}games?&dates=${lastYear},${currDate}&ordering=-rating&page_size=10&page=${page}`;
+  return `${server_url}${encodeURIComponent(urlPopNew)}`;
+};
 
-// export const new_games_page = (page) => {
-//   console.log("This fired! newGames Page");
-//   return `${base_url}games?&dates=${lastYear},${currDate}&ordering=-released&page_size=10&page=${page}`;
-// };
+export const upcome_games_page = (page) => {
+  console.log("This fired! upCome Page");
+  const urlUpcomeNew = `${base_url}games?&dates=${lastYear},${currDate}&ordering=-added&page_size=10&page=${page}`;
+  return `${server_url}${encodeURIComponent(urlUpcomeNew)}`;
+};
 
-// export const gameDetailURL = (game_id) =>`${base_url}games/${game_id}?`;
+export const new_games_page = (page) => {
+  console.log("This fired! newGames Page");
+  const urlNewgameNew = `${base_url}games?&dates=${lastYear},${currDate}&ordering=-released&page_size=10&page=${page}`;
+  return `${server_url}${encodeURIComponent(urlNewgameNew)}`;
+};
 
-// export const gameScreenShotURL = (game_id) =>`${base_url}games/${game_id}/screenshots?`;
+export const gameDetailURL = (game_id) => `${base_url}games/${game_id}?`;
 
-// export const searchGameURL = (game_name) =>`${base_url}games?&search=${game_name}&page_size=9`;
+export const gameScreenShotURL = (game_id) =>
+  `${base_url}games/${game_id}/screenshots?`;
 
-// export const search_games_page = (game_name, page) => {
-//   console.log("This fired! search Games Page");
-//   return `${base_url}games?$&search=${game_name}&page_size=9&page=${page}`
-//   ;
-// };
+export const searchGameURL = (game_name) =>
+  `${base_url}games?&search=${game_name}&page_size=9`;
+
+export const search_games_page = (game_name, page) => {
+  console.log("This fired! search Games Page");
+  return `${base_url}games?$&search=${game_name}&page_size=9&page=${page}`;
+};
