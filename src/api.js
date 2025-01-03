@@ -3,7 +3,8 @@ const isDevelopment = process.env.NODE_ENV === "development";
 const server_url = `/api/fetchData?url=`;
 
 const base_url = `https://api.rawg.io/api/`;
-const local_key = isDevelopment ? `key=${api_key}` : "";
+// const local_key = isDevelopment ? `key=${api_key}` : "";
+const local_key = isDevelopment && api_key ? `key=${api_key}` : "";
 
 const getCurrMonth = () => {
   const month = new Date().getMonth() + 1; // getMonth() is zero-based
