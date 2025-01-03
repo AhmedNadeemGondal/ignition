@@ -125,15 +125,35 @@ export const new_games_page = (page) => {
   return `${server_url}${encodeURIComponent(urlNewgameNew)}`;
 };
 
-export const gameDetailURL = (game_id) => `${base_url}games/${game_id}?`;
+// export const gameDetailURL = (game_id) => `${base_url}games/${game_id}?`;
 
-export const gameScreenShotURL = (game_id) =>
-  `${base_url}games/${game_id}/screenshots?`;
+// export const gameScreenShotURL = (game_id) =>
+//   `${base_url}games/${game_id}/screenshots?`;
 
-export const searchGameURL = (game_name) =>
-  `${base_url}games?&search=${game_name}&page_size=9`;
+// export const searchGameURL = (game_name) =>
+//   `${base_url}games?&search=${game_name}&page_size=9`;
+
+// export const search_games_page = (game_name, page) => {
+//   console.log("This fired! search Games Page");
+//   return `${base_url}games?$&search=${game_name}&page_size=9&page=${page}`;
+// };
+export const gameDetailURL = (game_id) => {
+  const url = `${base_url}games/${game_id}?`;
+  return `${server_url}${encodeURIComponent(url)}`;
+};
+
+export const gameScreenShotURL = (game_id) => {
+  const url = `${base_url}games/${game_id}/screenshots?`;
+  return `${server_url}${encodeURIComponent(url)}`;
+};
+
+export const searchGameURL = (game_name) => {
+  const url = `${base_url}games?&search=${game_name}&page_size=9`;
+  return `${server_url}${encodeURIComponent(url)}`;
+};
 
 export const search_games_page = (game_name, page) => {
   console.log("This fired! search Games Page");
-  return `${base_url}games?$&search=${game_name}&page_size=9&page=${page}`;
+  const url = `${base_url}games?$&search=${game_name}&page_size=9&page=${page}`;
+  return `${server_url}${encodeURIComponent(url)}`;
 };
