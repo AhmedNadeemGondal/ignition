@@ -3,8 +3,7 @@ const isDevelopment = process.env.NODE_ENV === "development";
 const server_url = `/api/fetchData?url=`;
 
 const base_url = `https://api.rawg.io/api/`;
-// const local_key = isDevelopment ? `key=${api_key}` : "";
-const local_key = isDevelopment && api_key ? `key=${api_key}` : "";
+const local_key = isDevelopment ? `key=${api_key}` : "";
 
 const getCurrMonth = () => {
   const month = new Date().getMonth() + 1; // getMonth() is zero-based
@@ -23,9 +22,17 @@ const currDate = `${currYear}-${currMonth}-${currDay}`;
 const lastYear = `${currYear - 1}-${currMonth}-${currDay}`;
 const nextYear = `${currYear + 1}-${currMonth}-${currDay}`;
 
-const pop_games = `games?${local_key}&dates=${lastYear},${currDate}&ordering=-rating&page_size=10`;
-const upcome_games = `games?${local_key}&dates=${currDate},${nextYear}&ordering=-added&page_size=10`;
-const new_games = `games?${local_key}&dates=${lastYear},${currDate}&ordering=-released&page_size=10`;
+const pop_games = isDevelopment
+  ? `games?${local_key}&dates=${lastYear},${currDate}&ordering=-rating&page_size=10`
+  : `games?&dates=${lastYear},${currDate}&ordering=-rating&page_size=10`;
+
+const upcome_games = isDevelopment
+  ? `games?${local_key}&dates=${currDate},${nextYear}&ordering=-added&page_size=10`
+  : `games?&dates=${currDate},${nextYear}&ordering=-added&page_size=10`;
+
+const new_games = isDevelopment
+  ? `games?${local_key}&dates=${lastYear},${currDate}&ordering=-released&page_size=10`
+  : `games?&dates=${lastYear},${currDate}&ordering=-released&page_size=10`;
 
 const getReqURL = (req_url) =>
   isDevelopment ? req_url : `${server_url}${encodeURIComponent(req_url)}`;
